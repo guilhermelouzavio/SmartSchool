@@ -4,7 +4,7 @@
  
  <div class class="row">
     <div class="mr-auto">
-      <app-titulo [titulo]= "'Professor(a):' + profSelected"></app-titulo>     
+      <app-titulo [titulo]= "'Professor(a):' + profSelected.id"></app-titulo>     
     </div>
     <div class="mt-1">
       <button class="btn btn-warning" (click)='voltar()'>Lista de Professores</button>
@@ -14,16 +14,13 @@
     <form>
       <div class="form-group">
         <label for="formGroupExampleInput">Nome</label>
-        <input type="text" class="form-control" >
+        <input type="text" value= "{{profSelected.nome}}" class="form-control" >
       </div>
       <div class="form-group">
-        <label for="formGroupExampleInput2">Sobrenome</label>
-        <input type="text" class="form-control">
+        <label for="formGroupExampleInput2">Disciplina</label>
+        <input type="text"  value= "{{profSelected.disciplina}}" class="form-control">
       </div>
-      <div class="form-group">
-        <label for="formGroupExampleInput2">Telefone</label>
-        <input type="text" class="form-control">
-      </div>
+      
     </form>
 </div>
 
