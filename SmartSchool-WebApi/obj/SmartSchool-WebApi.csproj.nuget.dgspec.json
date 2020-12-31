@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\guilherme\\Desktop\\ProjetoSmartSchool\\SmartSchool-WebApi\\SmartSchool-WebApi.csproj": {}
+    "C:\\Users\\guilherme\\Desktop\\SmartSchool\\SmartSchool-WebApi\\SmartSchool-WebApi.csproj": {}
   },
   "projects": {
-    "C:\\Users\\guilherme\\Desktop\\ProjetoSmartSchool\\SmartSchool-WebApi\\SmartSchool-WebApi.csproj": {
+    "C:\\Users\\guilherme\\Desktop\\SmartSchool\\SmartSchool-WebApi\\SmartSchool-WebApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\guilherme\\Desktop\\ProjetoSmartSchool\\SmartSchool-WebApi\\SmartSchool-WebApi.csproj",
+        "projectUniqueName": "C:\\Users\\guilherme\\Desktop\\SmartSchool\\SmartSchool-WebApi\\SmartSchool-WebApi.csproj",
         "projectName": "SmartSchool-WebApi",
-        "projectPath": "C:\\Users\\guilherme\\Desktop\\ProjetoSmartSchool\\SmartSchool-WebApi\\SmartSchool-WebApi.csproj",
+        "projectPath": "C:\\Users\\guilherme\\Desktop\\SmartSchool\\SmartSchool-WebApi\\SmartSchool-WebApi.csproj",
         "packagesPath": "C:\\Users\\guilherme\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\guilherme\\Desktop\\ProjetoSmartSchool\\SmartSchool-WebApi\\obj\\",
+        "outputPath": "C:\\Users\\guilherme\\Desktop\\SmartSchool\\SmartSchool-WebApi\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\guilherme\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -37,6 +37,28 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "dependencies": {
+            "Microsoft.AspNetCore.Mvc.NewtonsoftJson": {
+              "target": "Package",
+              "version": "[3.1.2, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.Sqlite": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
