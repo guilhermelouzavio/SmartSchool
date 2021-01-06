@@ -11,16 +11,18 @@
     </div>
   </div>
 
-    <form>
+    <form [formGroup] = "professorForm" (submit) = "professorSubmit()"> 
       <div class="form-group">
         <label for="formGroupExampleInput">Nome</label>
-        <input type="text" value= "{{profSelected.nome}}" class="form-control" >
+        <input type="text"  formControlName = "nome"  class="form-control" >
       </div>
-      <div class="form-group">
+      <!-- <div class="form-group">
         <label for="formGroupExampleInput2">Disciplina</label>
         <input type="text"  value= "{{profSelected.disciplina}}" class="form-control">
+      </div> -->
+      <div class="form-group">
+        <button class="btn btn-success" [disabled] = "!professorForm.valid">Enviar</button>
       </div>
-      
     </form>
 </div>
 
@@ -38,7 +40,7 @@
     </thead>
     <tbody>
       <tr *ngFor = "let professor of professores"  style="cursor: pointer;">
-        <td><button (click)='profSelect(professor)' class="btn text-dark btn-sm btn-outline-warning">Detalhe</button></td>
+        <td><button (click)='professorSelect(professor)' class="btn text-dark btn-sm btn-outline-warning">Detalhe</button></td>
         <th scope="row">{{professor.id}}</th>
         <td>{{professor.nome}}</td>
         <td>{{professor.disciplina}}</td>
