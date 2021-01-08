@@ -92,7 +92,7 @@ namespace SmartSchool_WebApi.Controllers
             {
                 Aluno al = await _repo.GetAlunoAsyncById(alunoId, false);
                 
-                if(al is null) return NotFound("Aluno não encontrado");
+                if(al is null) return NotFound("Aluno nï¿½o encontrado");
 
                 _repo.Update(aluno);
 
@@ -123,7 +123,7 @@ namespace SmartSchool_WebApi.Controllers
 
                 if (await _repo.SaveChangesAsync())
 
-                    return Ok("Deletado");
+                    return Ok(new { message = "Deletado"});
 
 
             }

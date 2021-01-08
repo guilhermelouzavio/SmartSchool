@@ -21,6 +21,7 @@ export class ProfessoresComponent implements OnInit {
   titulo = 'Professores Mauricio Simão';
   profSelected: Professor;
   professores: Professor[];
+  modo: string;
 
   constructor(private fb: FormBuilder, private modalService: BsModalService, private professoresService: ProfessoresService) {
 
@@ -49,7 +50,9 @@ export class ProfessoresComponent implements OnInit {
     });
   }
   salvarProfessor(professor: Professor){
-    this.professoresService.put(professor.id, professor).subscribe(
+    (professor.id == 0) ? this.modo = 'post' : this.modo = 'put';
+    
+    this.professoresService[this.modo](professor).subscribe(
       //função para sucesso
       (model: Professor) => {
         console.log(model);
@@ -71,6 +74,11 @@ export class ProfessoresComponent implements OnInit {
  professorSelect(professor: Professor){
     this.profSelected = professor;
     this.professorForm.patchValue(professor);
+  }
+
+  professorNovo(){
+    this.profSelected = new Professor();
+    this.professorForm.patchValue(this.profSelected);
   }
   
   carregarProfessor(){

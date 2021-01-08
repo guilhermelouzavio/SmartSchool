@@ -16,6 +16,7 @@ export class AlunosComponent implements OnInit {
   tituloAlunos = 'Alunos';
   alunoSelected: Aluno;
   textSimple: string;
+  modo: string;
   
   public alunos: Aluno[];
 
@@ -57,7 +58,9 @@ export class AlunosComponent implements OnInit {
   }
 
   salvarAluno(aluno: Aluno){
-    this.alunoService.put(aluno.id, aluno).subscribe(
+    (aluno.id == 0) ? this.modo = 'post' : this.modo = 'put';
+    
+    this.alunoService[this.modo](aluno).subscribe(
       //função para sucesso
       (model: Aluno) => {
         console.log(model);
@@ -79,6 +82,22 @@ export class AlunosComponent implements OnInit {
   alunoSelect(aluno: Aluno){
     this.alunoSelected = aluno;
     this.alunoForm.patchValue(aluno);
+  }
+
+  deletarAluno(id: number){
+    this.alunoService.delete(id).subscribe(
+      (model: any) => {
+        console.log(model);
+        this.carregarAlunos();
+      },
+      (erro: any) => {
+        console.error(erro);
+      }
+    )
+  }
+  alunoNovo(){
+    this.alunoSelected = new Aluno();
+    this.alunoForm.patchValue(this.alunoSelected);
   }
 
   voltar(aluno:any){

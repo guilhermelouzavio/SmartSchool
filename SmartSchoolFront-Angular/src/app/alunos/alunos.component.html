@@ -1,66 +1,62 @@
 
 <div class="row">
+    <div class="col-sm-6" *ngIf = "alunoSelected"> 
+    
+          <app-titulo [titulo]= "(alunoSelected.id === 0 ? 'Novo Aluno' : 'Cód. Aluno: ' + alunoSelected.id) ">
+            <button class="btn btn-sm btn-outline-danger" (click)='voltar()'>Fechar</button>
+          </app-titulo>           
+      
+      <!-- <input type="text" value= "{{alunoSelected.nome}}" class="form-control" > -->
 
-
-  <div class="col-sm-6" *ngIf = "alunoSelected"> 
-    <div class="row">
-      <div class="mr-auto">
-        <app-titulo [titulo]= "'Cód. Aluno: ' + alunoSelected.id"></app-titulo>     
-      </div>
-      <div class="mt-1">
-        <button class="btn btn-sm btn-outline-danger" (click)='voltar()'>Fechar</button>
-      </div>
+      <form [formGroup] = "alunoForm" (submit) = "alunoSubmit()">
+        <div class="form-group">
+          <label for="formGroupExampleInput">Nome</label>
+          <input type="text" formControlName = "nome" class="form-control" >
+        </div>
+        <div class="form-group">
+          <label for="formGroupExampleInput2">Sobrenome</label>
+          <input type="text" formControlName = "sobrenome" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="formGroupExampleInput2">Telefone</label>
+          <input type="text" formControlName = "telefone" class="form-control">
+        </div>
+        <div class="form-group">
+          <button class="btn btn-success" [disabled] = "!alunoForm.valid">Enviar</button>
+        </div>
+      </form>
     </div>
     
-    <!-- <input type="text" value= "{{alunoSelected.nome}}" class="form-control" > -->
-
-    <form [formGroup] = "alunoForm" (submit) = "alunoSubmit()">
-      <div class="form-group">
-        <label for="formGroupExampleInput">Nome</label>
-        <input type="text" formControlName = "nome" class="form-control" >
-      </div>
-      <div class="form-group">
-        <label for="formGroupExampleInput2">Sobrenome</label>
-        <input type="text" formControlName = "sobrenome" class="form-control">
-      </div>
-      <div class="form-group">
-        <label for="formGroupExampleInput2">Telefone</label>
-        <input type="text" formControlName = "telefone" class="form-control">
-      </div>
-      <div class="form-group">
-        <button class="btn btn-success" [disabled] = "!alunoForm.valid">Enviar</button>
-      </div>
-    </form>
+    <div [ngClass] = "{'col-sm-6' : alunoSelected , 'col-sm-12' : !alunoSelected }"> 
+      <app-titulo [titulo]= "tituloAlunos">
+        <button class="btn btn-sm btn-success" (click)='alunoNovo()'>Cadastrar Aluno</button>
+      </app-titulo>
+      <table class="table table-hover">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col"></th>
+            <th scope="col">ID</th>
+            <th scope="col">Nome</th>
+            <th scope="col">Sobrenome</th>
+            <th scope="col">Telefone</th>
+            <th scope="col">Opções</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor = "let aluno of alunos" style="cursor: pointer;" >
+            <td><button (click)="alunoSelect(aluno)" class="btn btn-sm btn-outline-warning">detalhe</button></td>
+            <td scope="row">{{aluno.id}}</td>
+            <td>{{aluno.nome}}</td>
+            <td>{{aluno.sobrenome}}</td>
+            <td>{{aluno.telefone}}</td>
+            <td>  
+              <div class="btn-group"><button  (click)="openModal(template)" class="btn btn-sm btn-outline-primary">Professores</button></div>
+              <div class="btn-group"><button class="btn btn-sm btn-outline-danger" (click) = "deletarAluno(aluno.id)">Deletar</button></div>
+            </td>
+          </tr>
+        </tbody>
+    </table>
   </div>
-  
-  <div [ngClass] = "{'col-sm-6' : alunoSelected , 'col-sm-12' : !alunoSelected }"> 
-    <app-titulo [titulo]= "tituloAlunos"></app-titulo>
-    <table class="table table-hover">
-      <thead class="thead-dark">
-        <tr>
-          <th scope="col"></th>
-          <th scope="col">ID</th>
-          <th scope="col">Nome</th>
-          <th scope="col">Sobrenome</th>
-          <th scope="col">Telefone</th>
-          <th scope="col">Opções</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor = "let aluno of alunos" style="cursor: pointer;" >
-          <td><button (click)="alunoSelect(aluno)" class="btn btn-sm btn-outline-warning">detalhe</button></td>
-          <td scope="row">{{aluno.id}}</td>
-          <td>{{aluno.nome}}</td>
-          <td>{{aluno.sobrenome}}</td>
-          <td>{{aluno.telefone}}</td>
-          <td>  
-            <div class="btn-group"><button  (click)="openModal(template)" class="btn btn-sm btn-outline-primary">Professores</button></div>
-            <div class="btn-group"><button class="btn btn-sm btn-outline-danger">Desativar</button></div>
-          </td>
-        </tr>
-      </tbody>
-  </table>
-</div>
 </div>
 
  
